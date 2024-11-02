@@ -1,8 +1,20 @@
+import os
 import re
 from collections import Counter
 
-COUNT = 10  
-PATHL = "/path/log"
+PATHL = input("Insert the log file path... ")
+
+if not os.path.exists(PATHL):
+    print(f"ERROR: The file {PATHL} doesn't exist")
+    exit(1)
+
+try:
+    COUNT = int(input("How many results do you want?.. "))
+    if COUNT <= 0:
+        raise ValueError("The number of result has to be an integer")
+except ValueError as e:
+    print(f"ERORR: {e}")
+    exit(1)
 
 def get_ip_adrrs(log_path, count):
     with open(log_path, 'r') as file:
