@@ -1,7 +1,7 @@
 #!/bin/bash
 
 COUNT=10
-PATHL=/home/matutev/gitclones/devops/nginx-log-analyser/nginx-access.log
+PATHL="/path/log"
 
 echo -e "\n=== TOP ${COUNT} IP ADDR - HIGH REQUEST ===\n"
 awk '{print $1}' $PATHL | sort | uniq -c | sort -nr |awk '{print $2 " - " $1 " requests"}' | head -n ${COUNT}
